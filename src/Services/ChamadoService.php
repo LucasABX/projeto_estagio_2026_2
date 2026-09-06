@@ -7,28 +7,32 @@ class ChamadoService{
         $prazoEstipulado = trim($dados['prazoEstipulado'] ?? '');
         $descricao = trim($dados['descricao'] ?? '');
 
+        $erros = [];
+
         if(empty($cliente)){
-            throw new Exception("O nome do solicitante é obrigatório.");
+            $erros['cliente'] = "O nome do solicitante é obrigatório.";
         }
 
         if(empty($email)){
-            throw new Exception("O email do solicitante é obrigatório.");
-        }
-
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            throw new Exception("O formato do email é inválido");
+            $erros['email'] = "O email do solicitante é obrigatório.";
+        }elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+            $erros['email'] = "O formato do email é inválido";
         }
 
         if(empty($tipo)){
-            throw new Exception("Selecione um tipo de equipamento válido.");
+            $erros['tipo'] = "Selecione um tipo de equipamento válido.";
         }
 
         if(empty($prazoEstipulado)){
-            throw new Exception("O prazo estipulado é obrigatório");
+            $erros['prazoEstipulado'] = "O prazo estipulado é obrigatório";
         }
 
         if(empty($descricao)){
-            throw new Exception("A descrição do defeito é obrigatória.");
+            $erros['descricao'] = "A descrição do defeito é obrigatória.";
+        }
+
+        if(!empty($erros)){
+            throw new Exception(json_encode($erros));
         }
 
         $chamado = R::dispense('chamado');

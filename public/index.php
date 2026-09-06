@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
     require_once __DIR__ . '/../lib/db.php';
 
     $metodo = $_SERVER['REQUEST_METHOD'];
@@ -7,6 +7,9 @@
 
     if($metodo === 'GET' && ($caminho === '/' || $caminho === '')){
         require_once __DIR__ . '/../src/Views/home.php';
+    }else if($metodo === 'POST' && $caminho === '/chamados'){
+        require_once __DIR__ . '/../src/Controllers/ChamadoController.php';
+        ChamadoController::Salvar();
     }else{
         http_response_code(404);
         echo "<h1>404 - Pagina nao encontrada</h1>";

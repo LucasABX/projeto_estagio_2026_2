@@ -8,7 +8,7 @@
                 exit;
             }catch(Exception $e){
                 $_SESSION['dadosFormulario'] = $_POST;
-                $_SESSION['erro'] = $e->getMessage();
+                $_SESSION['erros'] = json_decode($e->getMessage(), true) ?? ['geral' => $e->getMessage()];
                 header('Location: /');
                 exit;
             }
