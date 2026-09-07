@@ -6,4 +6,8 @@
     R::setup("sqlite:" . $caminhoBanco);
 
     R::freeze(false);
+
+    require_once __DIR__ . '/../src/Services/LoginService.php';
+
+    LoginService::inicializarAdm();
 ?>
