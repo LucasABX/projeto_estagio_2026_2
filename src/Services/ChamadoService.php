@@ -48,9 +48,21 @@ class ChamadoService{
         }
         $chamado->descricao = $descricao;
         $chamado->status = 'Pendente';
-        $chamado->criadoEm = date('Y-m-d H:i:s');
+        $chamado->criado_em = date('Y-m-d H:i:s');
 
         return R::store($chamado);
+    }
+
+    public static function listarTodos():array{
+        Return R::findAll('chamado', 'ORDER BY criado_em DESC');
+    }
+
+    public static function alterarStatus(int $id, String $status){
+        $chamado = R::load('chamado', $id);
+        if($chamado->id > 0){
+            $chamado->status = $status;
+            R::store($chamado);
+        }
     }
 }
 ?>

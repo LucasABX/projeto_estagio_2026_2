@@ -13,5 +13,20 @@
                 exit;
             }
         }
+
+        public static function listaAdmin(){
+            $chamados = ChamadoService::listarTodos();
+            require_once __DIR__ . '/../Views/admin.php';
+        }
+
+        public static function atualizarStatus(){
+            $id = (int)($_POST['id'] ?? -1);
+            $status = $_POST['status'];
+            if($id >= 0){
+                ChamadoService::alterarStatus($id, $status);
+                header('Location: /admin');
+                exit;
+            }
+        }
     }
 ?>
