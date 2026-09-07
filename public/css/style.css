@@ -1,0 +1,136 @@
+html {
+    font-size: 85%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+header.site-header {
+    background-color: var(--pico-card-background-color);
+    border-bottom: 1px solid var(--pico-card-border-color);
+    padding: 0.85rem 0;
+    margin-bottom: 2rem;
+}
+
+header.site-header nav ul {
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0;
+}
+
+footer.site-footer {
+    border-top: 1px solid var(--pico-muted-border-color);
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--pico-muted-color);
+}
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+article {
+    border: 1px solid var(--pico-card-border-color);
+    border-top: 3px solid var(--pico-primary);
+}
+
+.btn-header {
+    padding: 0.35rem 0.85rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.btn-sair {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.85rem;
+    margin-bottom: 0;
+}
+
+.user-badge {
+    color: var(--pico-muted-color);
+    font-size: 0.85rem;
+    margin-right: 0.25rem;
+}
+
+[data-theme="light"] {
+    --pico-primary: #0077cc;
+    --pico-primary-background: #0077cc;
+    --pico-primary-hover: #005fa3;
+    --pico-primary-border: var(--pico-primary-background);
+
+    --pico-background-color: #f1f5f9;
+    --pico-card-background-color: #ffffff;
+    --pico-card-border-color: #e2e8f0;
+
+    --pico-form-element-background-color: #f8fafc;
+    --pico-form-element-border-color: #cbd5e1;
+    --pico-form-element-color: #0f172a;
+    --pico-muted-border-color: #e2e8f0;
+}
+
+[data-theme="dark"],
+:root:not([data-theme="light"]) {
+    --pico-primary: #0077cc;
+    --pico-primary-background: #0077cc;
+    --pico-primary-hover: #005fa3;
+    --pico-primary-border: var(--pico-primary-background);
+
+    --pico-background-color: #0d1117;
+    --pico-card-background-color: #161b22;
+    --pico-card-border-color: #30363d;
+
+    --pico-form-element-background-color: #0d1117;
+    --pico-form-element-border-color: #30363d;
+    --pico-form-element-color: #e6edf3;
+    --pico-form-element-placeholder-color: #8b949e;
+
+    --pico-muted-border-color: #21262d;
+    --pico-muted-color: #8b949e;
+}
+
+.status-select {
+    margin-bottom: 0;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 6px;
+    width: auto;
+}
+
+.status-pendente {
+    background-color: rgba(234, 179, 8, 0.15);
+    border: 1px solid rgba(234, 179, 8, 0.4);
+    color: #facc15;
+}
+
+.status-confirmado {
+    background-color: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #4ade80;
+}
+
+.status-cancelado {
+    background-color: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #f87171;
+}
+
+.btn-status-ok {
+    margin-bottom: 0;
+    padding: 0.25rem 0.55rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 5px;
+}
