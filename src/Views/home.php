@@ -20,7 +20,7 @@
         </ul>
         <ul>
             <li><a href="/">Novo Chamado</a></li>
-            <li><a href="/admin">Painel do Gestor</a></li>
+            <li><a href="/login">Painel do Gestor</a></li>
         </ul>
     </nav>
 
@@ -37,7 +37,7 @@
             </article>
             <?php endif; ?>
 
-            <form action="/chamados" method="POST" novalidate>
+            <form action="/chamados" method="POST">
                 <label for="cliente">
                     Nome Completo do Solicitante
                     <input type="text" id="cliente" name="cliente" 
