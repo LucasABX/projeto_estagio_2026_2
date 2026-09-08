@@ -69,7 +69,20 @@
                                 </td>
                                 <td> <?= date('d/m/Y H:i', strtotime($chamado->criado_em)) ?> </td>
 
-                                <td> <?= $urgencias[$chamado->id]['texto'] ?> </td>
+                                <td> 
+                                    <?php
+                                        $seletorUrgencia = match($urgencias[$chamado->id]['situacao']){
+                                            'Atrasado'    => 'urgencia-atrasado',
+                                            'Urgente'     => 'urgencia-urgente',
+                                            'No prazo'    => 'urgencia-noprazo',
+                                            'Prazo longo' => 'urgencia-prazolongo',
+                                            default       => 'urgencia-finalizado',
+                                        }  
+                                    ?>
+                                    <span class="urgencia <?= $seletorUrgencia ?>">
+                                        <?= $urgencias[$chamado->id]['texto'] ?>
+                                    </span>
+                                </td>
 
                                 <?php
                                     $statusClasse = match(strtolower($chamado->status)) {
