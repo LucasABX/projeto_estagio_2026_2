@@ -44,7 +44,7 @@
                 <tbody>
                     <?php if(empty($chamados)): ?>
                         <tr>
-                            <td colspan="9" style="text-align: center;">Nenhum chamado registrado até o momento.</td>
+                            <td colspan="10" style="text-align: center;">Nenhum chamado registrado até o momento.</td>
                         </tr>
                     <?php else: ?>
                         <?php foreach ($chamados as $chamado) : ?>
@@ -58,11 +58,11 @@
                                 </td>
                                 <td> 
                                     <?php
-                                        if($chamado->prazoEstipulado == 1){
+                                        if($chamado->prazoEstipulado === 1){
                                             echo "1 dia";
-                                        }elseif($chamado->prazoEstipulado == 3){
+                                        }elseif($chamado->prazoEstipulado === 3){
                                             echo "3 dias";
-                                        }elseif ($chamado->prazoEstipulado == 7) {
+                                        }elseif ($chamado->prazoEstipulado === 7) {
                                             echo "1 semana";
                                         }
                                     ?>    
