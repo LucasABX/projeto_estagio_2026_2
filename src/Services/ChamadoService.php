@@ -64,5 +64,48 @@ class ChamadoService{
             R::store($chamado);
         }
     }
+
+    public static function calcularUrgencia(string $criado_em, int $prazoDias, string $status):array{
+        if(strtolower($status) == 'pendente'){
+            $dataInicial = new DateTime($criado_em);
+            $dataLimite = $dataInicial->modify("+{$prazoDias} days");
+            $dataAtual = new DateTime();
+            $diffDias = $dataAtual->diff($dataLimite);
+            $intervalo = (int)$diffDias->format('%r%a');
+
+            $urgencia['dias'] = $intervalo;
+
+            if($intervalo < 0){
+                $num = -$intervalo;
+                $urgencia['texto'] = "Atrasado há {$num} dias";
+                $urgencia['situacao'] = "Atrasado";
+            }else if($intervalo === 0){
+                $urgencia['texto'] = "Vence hoje";
+                $urgencia['situacao'] = "Urgente";
+            }else if($intervalo >= 1 && $intervalo <= 3){
+                $urgencia['texto'] = "Vence em {$intervalo} dias";
+                $urgencia['situacao'] = "No prazo";
+            }else if($intervalo > 3){
+                $urgencia['texto'] = "Vence em {$intervalo} dias";
+                $urgencia['situacao'] = "Prazo longo";
+            }
+
+            return $urgencia;
+        }else{
+            return [
+                'dias' => 999,
+                'situacao' => "Finalizado",
+                'texto' => "Chamado finalizado"
+            ];
+        }
+    }
+
+    public static function criarArrayUrgencia(array $chamados): array{
+        $urgencia = [];
+        foreach ($chamados as $chamado) {
+            $urgencia[$chamado->id] = self::calcularUrgencia($chamado->criado_em, $chamado->prazoEstipulado, $chamado->status);
+        }
+        return $urgencia;
+    }
 }
 ?>
