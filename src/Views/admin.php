@@ -38,7 +38,9 @@
                                 <td> <?= htmlspecialchars($chamado->cliente) ?> </td>
                                 <td> <?= htmlspecialchars($chamado->email) ?> </td>
                                 <td> <?= htmlspecialchars($chamado->tipo) ?> </td>
-                                <td> <?= htmlspecialchars($chamado->descricao) ?> </td>
+                                <td class="col-desc" title="<?= htmlspecialchars($chamado->descricao) ?>">
+                                    <?= htmlspecialchars($chamado->descricao) ?>
+                                </td>
                                 <td> 
                                     <?php
                                         if($chamado->prazoEstipulado == 1){
