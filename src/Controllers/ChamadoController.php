@@ -21,14 +21,22 @@
             require_once __DIR__ . '/../Views/admin.php';
         }
 
-        public static function atualizarStatus(){
-            $id = (int)($_POST['id'] ?? -1);
-            $status = $_POST['status'];
-            if($id >= 0){
-                ChamadoService::alterarStatus($id, $status);
-                header('Location: /admin');
+        public static function atualizarStatus(): void{
+            if(empty($_SESSION['usuario'])){
+                header('Location: /login');
                 exit;
             }
+        
+            $id = (int)($_POST['id'] ?? -1);
+            $status = trim($_POST['status'] ?? '');
+        
+            $statusValidos = ['pendente', 'confirmado', 'cancelado'];
+            if($id > 0 && in_array(strtolower($status), $statusValidos)){
+                ChamadoService::alterarStatus($id, $status);
+            }
+        
+            header('Location: /admin');
+            exit;
         }
     }
 ?>
