@@ -10,6 +10,21 @@
             <p>Gerencie as solicitações recebidas da equipe.</p>
         </header>
 
+        <div class="grid" style="margin-bottom: 2rem;">
+            <article style="padding: 1rem; text-align: center;">
+                <small>Pendentes</small>
+                <h3 style="margin: 0; color: #e0a800;"><?= $contadores['pendentes'] ?? 0 ?></h3>
+            </article>
+            <article style="padding: 1rem; text-align: center;">
+                <small>Confirmados</small>
+                <h3 style="margin: 0; color: #28a745;"><?= $contadores['confirmados'] ?? 0 ?></h3>
+            </article>
+            <article style="padding: 1rem; text-align: center;">
+                <small>Cancelados</small>
+                <h3 style="margin: 0; color: #dc3545;"><?= $contadores['cancelados'] ?? 0 ?></h3>
+            </article>
+        </div>
+
         <figure>
             <table role="grid">
                 <thead>

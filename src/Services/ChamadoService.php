@@ -111,5 +111,25 @@ class ChamadoService{
         }
         return $urgencia;
     }
+
+    public static function contarPorStatus(array $chamados): array{
+        $contador = [
+            'pendentes' => 0,
+            'confirmados' => 0,
+            'cancelados' => 0
+        ];
+
+        foreach($chamados as $chamado){
+            if(strtolower($chamado->status) === 'pendente'){
+                $contador['pendentes']++;
+            }else if(strtolower($chamado->status) === 'confirmado'){
+                $contador['confirmados']++;
+            }else if(strtolower($chamado->status) === 'cancelado'){
+                $contador['cancelados']++;
+            }
+        }
+        
+        return $contador;
+    }
 }
 ?>
