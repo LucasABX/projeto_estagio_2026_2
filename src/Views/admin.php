@@ -21,6 +21,7 @@
                         <th scope="col">Descrição</th>
                         <th scope="col">Prazo</th>
                         <th scope="col">Abertura</th>
+                        <th scope="col">Urgência</th>
                         <th scope="col">Status</th>
                         <th scope="col">Ação</th>
                     </tr>
@@ -50,6 +51,8 @@
                                     ?>    
                                 </td>
                                 <td> <?= date('d/m/Y H:i', strtotime($chamado->criado_em)) ?> </td>
+
+                                <td> <?= $urgencias[$chamado->id]['texto'] ?> </td>
 
                                 <?php
                                     $statusClasse = match(strtolower($chamado->status)) {
