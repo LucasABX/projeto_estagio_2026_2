@@ -16,6 +16,7 @@
 
         public static function listaAdmin(){
             $chamados = ChamadoService::listarTodos();
+            $urgencias = ChamadoService::criarArrayUrgencia($chamados);
             require_once __DIR__ . '/../Views/admin.php';
         }
 
