@@ -25,17 +25,20 @@ Sistema de abertura e gerenciamento de chamados técnicos para suporte de TI.
 1. Clone o repositório:
 
 
-git clone "https://github.com/LucasABX/projeto_estagio_2026_2"
-cd PROJETO_ESTAGIO_2026_2
+```bash
+git clone [https://github.com/LucasABX/projeto_estagio_2026_2.git](https://github.com/LucasABX/projeto_estagio_2026_2.git)
+cd projeto_estagio_2026_2
+```
 
 
 2. Inicie o servidor embutido do PHP:
 
+```bash
 php -S localhost:8000 -t public
-
+```
 
 3. Acesse no navegador:
-* **Página Pública (Abertura de Chamado):** `http://localhost:8000`
+`http://localhost:8000`
 
 ---
 
