@@ -39,13 +39,12 @@ class ChamadoService{
         $chamado->cliente = $cliente;
         $chamado->email = $email;
         $chamado->tipo = $tipo;
-        if($prazoEstipulado == "1 dia"){
-            $chamado->prazoEstipulado = 1;
-        }elseif($prazoEstipulado == "3 dias"){
-            $chamado->prazoEstipulado = 3;
-        }elseif ($prazoEstipulado == "1 semana") {
-            $chamado->prazoEstipulado = 7;
-        }
+        $chamado->prazoEstipulado = match($prazoEstipulado) {
+            '1 dia'    => 1,
+            '3 dias'   => 3,
+            '1 semana' => 7,
+            default    => 3,
+        };
         $chamado->descricao = $descricao;
         $chamado->status = 'Pendente';
         $chamado->criado_em = date('Y-m-d H:i:s');
@@ -66,6 +65,8 @@ class ChamadoService{
     }
 
     public static function calcularUrgencia(string $criado_em, int $prazoDias, string $status):array{
+        $urgencia = [];
+
         if(strtolower($status) == 'pendente'){
             $dataInicial = new DateTime($criado_em);
             $dataLimite = $dataInicial->modify("+{$prazoDias} days");
