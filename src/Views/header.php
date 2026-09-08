@@ -37,7 +37,6 @@
                         <a href="/admin" role="button" class="outline btn-header">Painel do Gestor</a>
                     </li>
                 <?php endif; ?>
-                <li><span class="user-badge">Olá, <?= htmlspecialchars($_SESSION['usuario']) ?></span></li>
                 <li>
                     <a href="/logout" role="button" class="secondary outline btn-sair">Sair</a>
                 </li>
