@@ -70,6 +70,10 @@ class ChamadoService{
             $dataInicial = new DateTime($criado_em);
             $dataLimite = $dataInicial->modify("+{$prazoDias} days");
             $dataAtual = new DateTime();
+
+            $dataLimite->setTime(0, 0, 0);
+            $dataAtual->setTime(0, 0, 0);
+
             $diffDias = $dataAtual->diff($dataLimite);
             $intervalo = (int)$diffDias->format('%r%a');
 
